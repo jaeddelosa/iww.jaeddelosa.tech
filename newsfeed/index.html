@@ -1,0 +1,1029 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/.nekoweb-api/static/site.js" type="text/javascript" defer></script><script src="/.nekoweb-api/static/site.js" type="text/javascript" defer></script>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>IranWarWatch — Iran Crisis & Global Oil Intelligence</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#07090e;--bg-p:#0d1117;--bg-c:#10161f;--bg-ch:#151e2b;
+  --bd:#1c2a3a;--bdb:#253a52;
+  --red:#e83210;--redd:#6b1a06;
+  --amb:#d97706;--teal:#0ea5c2;
+  --t1:#ddeaf5;--t2:#6e91ad;--t3:#334d63;--t4:#1e3347;
+  --glow:0 0 18px rgba(232,50,16,.28),0 0 36px rgba(232,50,16,.1);
+  --f1:'Bebas Neue',sans-serif;--f2:'IBM Plex Mono',monospace;--f3:'IBM Plex Sans',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--t1);font-family:var(--f3);min-height:100vh;overflow-x:hidden}
+body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,.04) 3px,rgba(0,0,0,.04) 4px);pointer-events:none;z-index:9999}
+
+/* HEADER */
+header{position:sticky;top:0;z-index:200;background:rgba(7,9,14,.97);backdrop-filter:blur(14px);border-bottom:1px solid var(--bd)}
+.h-top{display:flex;align-items:center;justify-content:space-between;padding:.7rem clamp(1rem,4vw,2.5rem);border-bottom:1px solid var(--bd);gap:1rem;flex-wrap:wrap}
+.logo{font-family:var(--f1);font-size:clamp(1.6rem,4vw,2.2rem);letter-spacing:.1em;color:var(--red);text-shadow:var(--glow);line-height:1}
+.logo-sub{font-family:var(--f2);font-size:.57rem;color:var(--t3);letter-spacing:.14em;text-transform:uppercase;margin-top:2px}
+.live-pill{display:flex;align-items:center;gap:.4rem;font-family:var(--f2);font-size:.6rem;color:var(--red);border:1px solid var(--redd);padding:.28rem .7rem;border-radius:2px;letter-spacing:.1em;white-space:nowrap}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--red);animation:blink 1.4s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1;box-shadow:0 0 5px var(--red)}50%{opacity:.2;box-shadow:none}}
+.h-bar{display:flex;align-items:center;justify-content:space-between;padding:.4rem clamp(1rem,4vw,2.5rem);gap:1rem;flex-wrap:wrap}
+.ticker-wrap{flex:1;min-width:0;overflow:hidden;font-family:var(--f2);font-size:.6rem;color:var(--amb);white-space:nowrap}
+.ticker{display:inline-block;animation:tick 55s linear infinite}
+@keyframes tick{from{transform:translateX(100vw)}to{transform:translateX(-100%)}}
+.h-meta{display:flex;gap:1.5rem;font-family:var(--f2);font-size:.57rem;white-space:nowrap;flex-shrink:0}
+.hm{display:flex;flex-direction:column;align-items:flex-end;gap:1px}
+.hm-l{color:var(--t3);font-size:.5rem;text-transform:uppercase;letter-spacing:.08em}
+.hm-v{color:var(--t1);font-weight:600}.hm-v.up{color:var(--amb)}
+
+/* BANNER */
+.banner{background:linear-gradient(135deg,#0c0500,#160900 45%,#090d18);border-bottom:2px solid var(--redd);padding:clamp(1.5rem,4vw,2.5rem) clamp(1rem,4vw,2.5rem);position:relative;overflow:hidden}
+.banner::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 90% 70% at 50% 110%,rgba(232,50,16,.07),transparent 60%);pointer-events:none}
+.banner-inner{display:grid;grid-template-columns:1fr auto;align-items:center;gap:2rem;max-width:1380px;margin:0 auto}
+@media(max-width:700px){.banner-inner{grid-template-columns:1fr}.tbox{display:none!important}}
+.b-chip{font-family:var(--f2);font-size:.57rem;letter-spacing:.17em;text-transform:uppercase;color:var(--red);margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem}
+.b-chip::before{content:'';width:18px;height:1px;background:var(--red);display:inline-block}
+.b-title{font-family:var(--f1);font-size:clamp(2rem,5vw,3.6rem);letter-spacing:.04em;line-height:.95;color:var(--t1);margin-bottom:.7rem}
+.b-title span{color:var(--amb)}
+.b-desc{font-size:.82rem;color:var(--t2);max-width:560px;line-height:1.65;font-weight:300}
+.tbox{text-align:center;padding:1.2rem 1.8rem;border:1px solid var(--redd);background:rgba(232,50,16,.05);border-radius:3px;min-width:120px;position:relative}
+.tbox::before{content:'';position:absolute;inset:-1px;border:1px solid var(--red);border-radius:3px;opacity:0;animation:tpulse 2.8s ease-in-out infinite}
+@keyframes tpulse{0%,100%{opacity:0;transform:scale(1)}50%{opacity:.35;transform:scale(1.04)}}
+.t-lbl{font-family:var(--f2);font-size:.52rem;letter-spacing:.13em;text-transform:uppercase;color:var(--t3);display:block;margin-bottom:.35rem}
+.t-val{font-family:var(--f1);font-size:1.5rem;color:var(--red);text-shadow:var(--glow);display:block;line-height:1;margin-bottom:.25rem}
+.t-sub{font-family:var(--f2);font-size:.52rem;color:var(--red);opacity:.65;letter-spacing:.08em}
+
+/* STATUS */
+.sbar{background:var(--bg-p);border-bottom:1px solid var(--bd);padding:.38rem clamp(1rem,4vw,2.5rem);display:flex;align-items:center;gap:.7rem;flex-wrap:wrap;min-height:30px}
+.si{font-family:var(--f2);font-size:.56rem;color:var(--t3);letter-spacing:.05em;display:flex;align-items:center;gap:.3rem}
+.si.ok::before{content:'●';color:#4ade80}.si.err::before{content:'●';color:var(--red)}.si.load::before{content:'○';color:var(--t4)}
+
+/* FILTER */
+.frow{max-width:1380px;margin:0 auto;padding:.75rem clamp(1rem,4vw,2.5rem);display:flex;align-items:center;gap:.55rem;flex-wrap:wrap}
+.fl{font-family:var(--f2);font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:var(--t3);margin-right:.2rem}
+.fb{font-family:var(--f2);font-size:.59rem;letter-spacing:.07em;text-transform:uppercase;padding:.26rem .68rem;border:1px solid var(--bd);background:transparent;color:var(--t2);cursor:pointer;border-radius:2px;transition:all .18s}
+.fb:hover,.fb.on{border-color:var(--teal);color:var(--teal);background:rgba(14,165,194,.08)}
+.ri{margin-left:auto;font-family:var(--f2);font-size:.57rem;color:var(--t3);display:flex;align-items:center;gap:.5rem}
+#cd{color:var(--teal);font-weight:600}
+.rb{padding:.22rem .55rem;border:1px solid var(--bdb);background:transparent;color:var(--t2);cursor:pointer;border-radius:2px;font-family:var(--f2);font-size:.57rem;transition:all .18s}
+.rb:hover{border-color:var(--teal);color:var(--teal)}
+
+/* LAYOUT */
+.wrap{max-width:1380px;margin:0 auto;padding:0 clamp(1rem,4vw,2.5rem) 4rem;display:grid;grid-template-columns:1fr 278px;gap:1.8rem;align-items:start}
+@media(max-width:860px){.wrap{grid-template-columns:1fr}.side{display:none}}
+
+/* GRID */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:1px;background:var(--bd)}
+@media(max-width:580px){.grid{grid-template-columns:1fr}}
+
+/* CARD */
+.card{background:var(--bg-c);padding:1.15rem;display:flex;flex-direction:column;gap:.68rem;position:relative;overflow:hidden;transition:background .18s;animation:cin .35s ease both}
+@keyframes cin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.card:hover{background:var(--bg-ch)}
+.card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--bdb);transition:background .18s}
+.card:hover::before,.card.p1::before{background:var(--red)}
+.card.p2::before{background:var(--amb)}
+.card.p3::before{background:var(--teal)}
+.cs{display:flex;align-items:center;justify-content:space-between;gap:.5rem}
+.csrc{font-family:var(--f2);font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:var(--t3);display:flex;align-items:center;gap:.33rem}
+.sdot{width:5px;height:5px;border-radius:50%;flex-shrink:0}
+.ctime{font-family:var(--f2);font-size:.51rem;color:var(--t4);white-space:nowrap}
+.ctitle{font-size:.88rem;font-weight:600;line-height:1.45;color:var(--t1)}
+.cexc{font-size:.75rem;color:var(--t2);line-height:1.55;font-weight:300;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.ctags{display:flex;gap:.33rem;flex-wrap:wrap}
+.tag{font-family:var(--f2);font-size:.47rem;letter-spacing:.09em;text-transform:uppercase;padding:.12rem .38rem;border-radius:1px}
+.tr{background:rgba(232,50,16,.09);color:var(--red);border:1px solid rgba(232,50,16,.2)}
+.ta{background:rgba(217,119,6,.09);color:var(--amb);border:1px solid rgba(217,119,6,.2)}
+.tt{background:rgba(14,165,194,.09);color:var(--teal);border:1px solid rgba(14,165,194,.2)}
+.tg{background:rgba(255,255,255,.03);color:var(--t3);border:1px solid var(--bd)}
+.clink{display:inline-flex;align-items:center;gap:.3rem;font-family:var(--f2);font-size:.55rem;letter-spacing:.07em;text-transform:uppercase;color:var(--teal);text-decoration:none;padding:.26rem 0;border-top:1px solid var(--bd);transition:all .18s;margin-top:auto}
+.clink:hover{color:var(--t1);gap:.5rem}
+.clink svg{width:9px;height:9px;flex-shrink:0}
+
+/* STATES */
+.state{grid-column:1/-1;padding:5rem 2rem;text-align:center;background:var(--bg-c)}
+.spin{width:34px;height:34px;border:2px solid var(--bd);border-top-color:var(--red);border-radius:50%;animation:sp .8s linear infinite;margin:0 auto 1rem}
+@keyframes sp{to{transform:rotate(360deg)}}
+.stxt{font-family:var(--f2);font-size:.63rem;color:var(--t3);letter-spacing:.13em;text-transform:uppercase}
+.stxt2{font-family:var(--f2);font-size:.58rem;color:var(--t4);letter-spacing:.06em;margin-top:.7rem;line-height:2}
+.progress-wrap{width:220px;height:2px;background:var(--bd);margin:1.2rem auto .3rem;border-radius:1px;overflow:hidden}
+.progress-bar{height:100%;background:var(--red);width:0%;transition:width .4s ease;border-radius:1px}
+.prog-lbl{font-family:var(--f2);font-size:.5rem;color:var(--t4);letter-spacing:.1em}
+
+/* SIDEBAR */
+.side{display:flex;flex-direction:column;gap:1.4rem;position:sticky;top:92px}
+.sp{background:var(--bg-p);border:1px solid var(--bd);padding:1.1rem}
+.sp-t{font-family:var(--f2);font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--t3);margin-bottom:.9rem;padding-bottom:.52rem;border-bottom:1px solid var(--bd);display:flex;align-items:center;gap:.42rem}
+.sp-t::before{content:'';width:6px;height:6px;background:var(--teal);display:inline-block;border-radius:50%;flex-shrink:0}
+.region{display:flex;align-items:center;gap:.52rem;padding:.43rem .48rem;border:1px solid var(--bd);background:var(--bg-c);margin-bottom:.38rem;transition:border-color .18s}
+.region:last-child{margin-bottom:0}.region:hover{border-color:var(--bdb)}
+.rflag{font-size:.88rem;line-height:1}
+.rn{font-weight:600;font-size:.67rem;color:var(--t1)}.rd{font-size:.53rem;color:var(--t3);margin-top:1px}
+.rs{margin-left:auto;font-family:var(--f2);font-size:.51rem;letter-spacing:.05em;white-space:nowrap}
+.rc{color:var(--red)}.re{color:var(--amb)}.rw{color:var(--teal)}
+.oil-row{display:flex;justify-content:space-between;align-items:baseline;padding:.53rem 0;border-bottom:1px solid var(--bd);gap:.5rem}
+.oil-row:last-of-type{border-bottom:none}
+.on{font-family:var(--f2);font-size:.57rem;color:var(--t2)}
+.op{font-family:var(--f2);font-size:.78rem;font-weight:600;color:var(--t1)}
+.oc{font-size:.54rem}.oc.up{color:var(--amb)}.oc.dn{color:#4ade80}
+.oil-note{font-family:var(--f2);font-size:.49rem;color:var(--t4);line-height:1.7;margin-top:.65rem;padding-top:.52rem;border-top:1px solid var(--bd);letter-spacing:.03em}
+
+/* FORECAST PANEL */
+.forecast-section{max-width:1380px;margin:0 auto;padding:1.2rem clamp(1rem,4vw,2.5rem) .5rem}
+.forecast-panel{background:var(--bg-p);border:1px solid var(--bdb);border-left:3px solid var(--amb);padding:1.3rem 1.5rem;position:relative;overflow:hidden}
+.forecast-panel::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 0% 50%,rgba(217,119,6,.04),transparent 60%);pointer-events:none}
+.fp-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;flex-wrap:wrap;gap:.5rem}
+.fp-title{font-family:var(--f1);font-size:1.45rem;letter-spacing:.07em;color:var(--amb)}
+.fp-badge{font-family:var(--f2);font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;padding:.22rem .6rem;border:1px solid var(--amb);color:var(--amb);border-radius:2px;opacity:.75}
+.fp-meta{font-family:var(--f2);font-size:.52rem;color:var(--t3);letter-spacing:.06em;margin-bottom:1.2rem}
+.fp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1px;background:var(--bd);margin-bottom:1.2rem}
+.fp-card{background:var(--bg-c);padding:1rem 1.1rem;position:relative}
+.fpc-label{font-family:var(--f2);font-size:.51rem;letter-spacing:.12em;text-transform:uppercase;color:var(--t3);margin-bottom:.5rem;display:flex;align-items:center;gap:.35rem}
+.fpc-label::before{content:'';width:5px;height:5px;border-radius:50%;flex-shrink:0;background:var(--teal)}
+.fpc-val{font-family:var(--f1);font-size:1.3rem;letter-spacing:.04em;line-height:1;margin-bottom:.35rem}
+.fpc-val.bull{color:var(--amb)}
+.fpc-val.bear{color:#4ade80}
+.fpc-val.warn{color:var(--red)}
+.fpc-val.neut{color:var(--t2)}
+.fpc-desc{font-family:var(--f3);font-size:.72rem;color:var(--t2);line-height:1.55;font-weight:300}
+.fp-signals{margin-bottom:1.2rem}
+.fps-title{font-family:var(--f2);font-size:.54rem;letter-spacing:.13em;text-transform:uppercase;color:var(--t3);margin-bottom:.65rem;padding-bottom:.4rem;border-bottom:1px solid var(--bd)}
+.signal-list{display:flex;flex-wrap:wrap;gap:.38rem}
+.sig{font-family:var(--f2);font-size:.5rem;letter-spacing:.07em;text-transform:uppercase;padding:.15rem .45rem;border-radius:1px;display:flex;align-items:center;gap:.28rem}
+.sig-hot{background:rgba(232,50,16,.1);color:var(--red);border:1px solid rgba(232,50,16,.22)}
+.sig-warm{background:rgba(217,119,6,.1);color:var(--amb);border:1px solid rgba(217,119,6,.22)}
+.sig-cool{background:rgba(14,165,194,.1);color:var(--teal);border:1px solid rgba(14,165,194,.22)}
+.sig-cnt{font-size:.6rem;opacity:.7}
+.fp-bar-section{margin-bottom:.8rem}
+.fpb-row{display:flex;align-items:center;gap:.7rem;margin-bottom:.48rem}
+.fpb-lbl{font-family:var(--f2);font-size:.52rem;color:var(--t2);width:90px;flex-shrink:0;text-align:right}
+.fpb-track{flex:1;height:5px;background:var(--bd);border-radius:2px;overflow:hidden}
+.fpb-fill{height:100%;border-radius:2px;transition:width .8s ease}
+.fpb-pct{font-family:var(--f2);font-size:.52rem;color:var(--t3);width:34px;flex-shrink:0}
+.fp-summary{background:var(--bg-c);border:1px solid var(--bd);padding:.9rem 1rem;border-left:2px solid var(--amb)}
+.fps-lbl{font-family:var(--f2);font-size:.5rem;letter-spacing:.13em;text-transform:uppercase;color:var(--t3);margin-bottom:.45rem}
+.fps-txt{font-size:.78rem;color:var(--t1);line-height:1.7;font-weight:300}
+.fps-txt strong{color:var(--amb);font-weight:600}
+.oil-live{font-family:var(--f2);font-size:.47rem;color:#4ade80;margin-left:.4rem;animation:blink 2s ease-in-out infinite}
+.oil-stale{font-family:var(--f2);font-size:.47rem;color:var(--t4);margin-left:.4rem}
+.src-row{display:flex;align-items:center;justify-content:space-between;font-family:var(--f2);font-size:.59rem;color:var(--t2);margin-bottom:.48rem;gap:.5rem}
+.src-row:last-child{margin-bottom:0}
+.src-n{display:flex;align-items:center;gap:.42rem}
+.src-c{background:var(--bd);padding:.07rem .36rem;border-radius:10px;color:var(--t3);font-size:.51rem}
+
+footer{border-top:1px solid var(--bd);padding:1.1rem clamp(1rem,4vw,2.5rem);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.8rem}
+.ft{font-family:var(--f2);font-size:.53rem;color:var(--t4);letter-spacing:.06em;line-height:1.9}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="h-top">
+    <div>
+      <div class="logo">IRANWARWATCH</div>
+      <div class="logo-sub">Iran Crisis · Oil &amp; Global Intelligence Feed</div>
+    </div>
+    <div class="live-pill"><span class="dot"></span>LIVE</div>
+  </div>
+  <div class="h-bar">
+    <div class="ticker-wrap"><span class="ticker" id="ticker">Initializing feed…</span></div>
+    <div class="h-meta">
+      <div class="hm"><span class="hm-l">Brent</span><span class="hm-v up" id="hdr-brent">$—</span></div>
+      <div class="hm"><span class="hm-l">WTI</span><span class="hm-v up" id="hdr-wti">$—</span></div>
+      <div class="hm"><span class="hm-l">Articles</span><span class="hm-v" id="hdr-count">—</span></div>
+      <div class="hm"><span class="hm-l">Updated</span><span class="hm-v" id="hdr-time">—</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="banner">
+  <div class="banner-inner">
+    <div>
+      <div class="b-chip">Active Situation Monitor</div>
+      <div class="b-title">Iran War &amp; the<br><span>Global Oil Crisis</span></div>
+      <div class="b-desc">Real-time intelligence from global news sources covering the Iran conflict, Strait of Hormuz tensions, OPEC disruptions, and cascading economic impacts.</div>
+    </div>
+    <div class="tbox">
+      <span class="t-lbl">Threat Level</span>
+      <span class="t-val">HIGH</span>
+      <span class="t-sub">Strait of Hormuz</span>
+    </div>
+  </div>
+</div>
+
+<div class="sbar" id="sbar"><span class="si load">Connecting to feeds…</span></div>
+
+<div class="frow">
+  <span class="fl">Filter:</span>
+  <button class="fb on" onclick="setFilter('all',this)">All</button>
+  <button class="fb" onclick="setFilter('iran',this)">Iran</button>
+  <button class="fb" onclick="setFilter('oil',this)">Oil &amp; Energy</button>
+  <button class="fb" onclick="setFilter('conflict',this)">Conflict</button>
+  <button class="fb" onclick="setFilter('economy',this)">Economy</button>
+  <div class="ri">Refresh in <span id="cd">5:00</span>&nbsp;<button class="rb" onclick="loadFeeds()">↻ Now</button></div>
+</div>
+
+<div class="forecast-section" id="forecast-section" style="display:none">
+  <div class="forecast-panel">
+    <div class="fp-header">
+      <div class="fp-title">SIGNAL FORECAST</div>
+      <div class="fp-badge">AI-Free · Keyword-Driven</div>
+    </div>
+    <div class="fp-meta" id="fp-meta">Analyzing live feed signals…</div>
+    <div class="fp-grid" id="fp-cards"></div>
+    <div class="fp-signals">
+      <div class="fps-title">Active Signal Keywords</div>
+      <div class="signal-list" id="fp-signals"></div>
+    </div>
+    <div class="fp-bar-section" id="fp-bars"></div>
+    <div class="fp-trajectory" id="fp-trajectory" style="display:none;margin-bottom:1.2rem;border:1px solid var(--bdb);background:var(--bg-c);padding:1rem 1.1rem;position:relative;overflow:hidden">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.6rem;flex-wrap:wrap;gap:.5rem">
+        <div class="fps-title" style="border:none;margin:0;padding:0">UNIFIED TRAJECTORY</div>
+        <div id="fp-traj-arrow" style="font-family:var(--f1);font-size:1.7rem;line-height:1"></div>
+      </div>
+      <div id="fp-traj-label" style="font-family:var(--f1);font-size:1.4rem;letter-spacing:.05em;margin-bottom:.45rem"></div>
+      <div id="fp-traj-desc" style="font-size:.75rem;color:var(--t2);line-height:1.65;font-weight:300"></div>
+      <div style="margin-top:.8rem;display:flex;gap:.5rem;flex-wrap:wrap" id="fp-traj-tags"></div>
+    </div>
+    <div class="fp-summary">
+      <div class="fps-lbl">Forecast Summary</div>
+      <div class="fps-txt" id="fp-summary-txt">Loading…</div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div>
+    <div class="grid" id="grid">
+      <div class="state">
+        <div class="spin"></div>
+        <div class="stxt">Fetching intelligence feeds…</div>
+        <div class="progress-wrap"><div class="progress-bar" id="prog"></div></div>
+        <div class="prog-lbl" id="prog-lbl">0 / 7 sources</div>
+      </div>
+    </div>
+  </div>
+  <aside class="side">
+    <div class="sp">
+      <div class="sp-t">Key Regions</div>
+      <div class="region"><span class="rflag">🇮🇷</span><div><div class="rn">Iran</div><div class="rd">Persian Gulf</div></div><span class="rs rc">CRITICAL</span></div>
+      <div class="region"><span class="rflag">🌊</span><div><div class="rn">Strait of Hormuz</div><div class="rd">20% global oil transit</div></div><span class="rs rc">CRITICAL</span></div>
+      <div class="region"><span class="rflag">🇮🇱</span><div><div class="rn">Israel</div><div class="rd">Middle East</div></div><span class="rs re">ELEVATED</span></div>
+      <div class="region"><span class="rflag">🇸🇦</span><div><div class="rn">Saudi Arabia</div><div class="rd">OPEC leader</div></div><span class="rs re">ELEVATED</span></div>
+      <div class="region"><span class="rflag">🇮🇶</span><div><div class="rn">Iraq</div><div class="rd">Production zone</div></div><span class="rs rw">WATCH</span></div>
+      <div class="region"><span class="rflag">🇺🇸</span><div><div class="rn">United States</div><div class="rd">5th Fleet, Gulf</div></div><span class="rs re">ELEVATED</span></div>
+    </div>
+    <div class="sp">
+      <div class="sp-t">Oil Prices <span id="oil-live-badge" class="oil-stale">● cached</span></div>
+      <div class="oil-row"><div class="on">Brent Crude</div><div><div class="op" id="op-brent">$—</div><div class="oc" id="oc-brent">—</div></div></div>
+      <div class="oil-row"><div class="on">WTI Crude</div><div><div class="op" id="op-wti">$—</div><div class="oc" id="oc-wti">—</div></div></div>
+      <div class="oil-row"><div class="on">Nat. Gas</div><div><div class="op" id="op-natgas">$—</div><div class="oc" id="oc-natgas">—</div></div></div>
+      <div class="oil-row"><div class="on">RBOB Gas</div><div><div class="op" id="op-rbob">$—</div><div class="oc" id="oc-rbob">—</div></div></div>
+      <div class="oil-note" id="oil-note">Fetching live prices…</div>
+    </div>
+    <div class="sp">
+      <div class="sp-t">Feed Sources</div>
+      <div id="src-list"><span style="font-family:var(--f2);font-size:.58rem;color:var(--t3)">Loading…</span></div>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <div class="ft">IRANWARWATCH · Automated RSS Intelligence Aggregator<br>Aggregates publicly available news. Not affiliated with any source.</div>
+  <div class="ft">Reuters · BBC · Al Jazeera · Guardian · AP · OilPrice.com · NYT</div>
+</footer>
+
+<script>
+// ─── PROXIES (tried in order until one works per feed) ────────────────────────
+// Each proxy wraps the RSS URL and returns either raw XML or JSON with XML inside
+const PROXIES = [
+  {
+    name: 'corsproxy.io',
+    build: url => 'https://corsproxy.io/?' + encodeURIComponent(url),
+    extract: async res => res.text()   // returns raw XML directly
+  },
+  {
+    name: 'allorigins',
+    build: url => 'https://api.allorigins.win/get?url=' + encodeURIComponent(url),
+    extract: async res => { const j = await res.json(); return j.contents; }
+  },
+  {
+    name: 'codetabs',
+    build: url => 'https://api.codetabs.com/v1/proxy?quest=' + encodeURIComponent(url),
+    extract: async res => res.text()
+  },
+];
+
+const FEEDS = [
+  { name:'Reuters',      color:'#f97316', url:'https://feeds.reuters.com/reuters/topNews' },
+  { name:'BBC MidEast',  color:'#dc2626', url:'https://feeds.bbci.co.uk/news/world/middle_east/rss.xml' },
+  { name:'Al Jazeera',   color:'#16a34a', url:'https://www.aljazeera.com/xml/rss/all.xml' },
+  { name:'The Guardian', color:'#3b82f6', url:'https://www.theguardian.com/world/rss' },
+  { name:'AP News',      color:'#a855f7', url:'https://apnews.com/rss/apf-topnews' },
+  { name:'OilPrice',     color:'#d97706', url:'https://oilprice.com/rss/main' },
+  { name:'NYT World',    color:'#6366f1', url:'https://rss.nytimes.com/services/xml/rss/nyt/World.xml' },
+];
+
+const RELEVANCE = [
+  'iran','iranian','tehran','irgc','khamenei','nuclear','hormuz','jcpoa',
+  'middle east','israel','hezbollah','hamas','gaza','houthi','red sea',
+  'oil','crude','opec','energy','petroleum','brent','wti','tanker','pipeline',
+  'war','attack','strike','missile','drone','military','conflict','sanction',
+  'saudi','iraq','syria','yemen','gulf','proxy','ballistic','airstr'
+];
+
+const FILTER_KW = {
+  iran:     ['iran','iranian','tehran','irgc','nuclear','jcpoa','hormuz'],
+  oil:      ['oil','crude','brent','wti','opec','energy','tanker','pipeline','fuel','petroleum','barrel'],
+  conflict: ['war','conflict','attack','strike','missile','drone','military','battle','bomb','weapon'],
+  economy:  ['economy','market','inflation','recession','trade','sanction','dollar','financial']
+};
+
+// ─── STATE ────────────────────────────────────────────────────────────────────
+let articles = [], activeFilter = 'all', countdown = 300, cdTimer = null;
+let feedStat = {}, loaded = 0;
+
+// ─── FETCH ONE FEED (tries each proxy in turn) ────────────────────────────────
+async function fetchFeed(feed) {
+  for (const proxy of PROXIES) {
+    try {
+      const proxyUrl = proxy.build(feed.url);
+      const res = await fetch(proxyUrl, { signal: AbortSignal.timeout(12000) });
+      if (!res.ok) continue;
+
+      const xml = await proxy.extract(res);
+      if (!xml || xml.length < 200) continue;
+
+      const items = parseXML(xml, feed);
+      if (items && items.length > 0) return items;
+    } catch(e) {
+      // try next proxy
+    }
+  }
+  return null;
+}
+
+function parseXML(xml, feed) {
+  try {
+    const doc = new DOMParser().parseFromString(xml, 'text/xml');
+    if (doc.querySelector('parsererror')) return null;
+
+    const items = [...doc.querySelectorAll('item, entry')];
+    if (!items.length) return null;
+
+    return items.slice(0, 30).map(el => {
+      const g = tag => el.querySelector(tag)?.textContent?.trim() || '';
+      const title = g('title');
+      if (!title) return null;
+
+      // link: <link> text, or href attribute (Atom), or <guid>
+      let link = g('link');
+      if (!link) {
+        const linkEl = el.querySelector('link');
+        link = linkEl?.getAttribute('href') || '';
+      }
+      if (!link) link = g('guid');
+      if (!link || link.startsWith('tag:')) link = '#';
+
+      const raw = g('description') || g('summary') || g('content') || '';
+      const desc = stripHTML(raw);
+      const date = g('pubDate') || g('published') || g('updated') || '';
+      const tags = inferTags(title + ' ' + desc);
+
+      return { title, desc, link, date, source: feed.name, color: feed.color, tags };
+    }).filter(Boolean);
+  } catch(e) {
+    return null;
+  }
+}
+
+// ─── MAIN LOAD ────────────────────────────────────────────────────────────────
+async function loadFeeds() {
+  loaded = 0;
+  feedStat = {};
+  articles = [];
+  setStatusBar('loading');
+  showLoading();
+
+  // fetch all feeds concurrently, update progress as each completes
+  const promises = FEEDS.map(feed =>
+    fetchFeed(feed).then(items => {
+      loaded++;
+      updateProgress(loaded, FEEDS.length);
+      if (items && items.length) {
+        feedStat[feed.name] = { ok: true, n: items.length };
+        return items;
+      } else {
+        feedStat[feed.name] = { ok: false, n: 0 };
+        return [];
+      }
+    })
+  );
+
+  const results = await Promise.all(promises);
+  let all = results.flat();
+
+  // relevance filter
+  const relevant = all.filter(a => isRelevant(a.title + ' ' + a.desc));
+  // if very few relevant, show everything we got
+  let pool = relevant.length >= 5 ? relevant : all;
+
+  // deduplicate
+  const seen = new Set();
+  pool = pool.filter(a => {
+    const k = a.title.toLowerCase().replace(/[^a-z0-9]/g,'').slice(0,55);
+    if (seen.has(k)) return false;
+    seen.add(k); return true;
+  });
+
+  // sort newest first (articles with no date go to end)
+  pool.sort((a, b) => {
+    const da = new Date(a.date), db = new Date(b.date);
+    if (isNaN(da) && isNaN(db)) return 0;
+    if (isNaN(da)) return 1;
+    if (isNaN(db)) return -1;
+    return db - da;
+  });
+
+  articles = pool.slice(0, 100);
+
+  setStatusBar('done');
+  updateSrcList();
+  renderCards();
+  updateHeader();
+  updateTicker();
+  resetCountdown();
+  runForecast(articles);
+}
+
+// ─── HELPERS ──────────────────────────────────────────────────────────────────
+function stripHTML(h) {
+  const d = document.createElement('div');
+  d.innerHTML = h;
+  return (d.textContent || d.innerText || '').replace(/\s+/g,' ').trim().slice(0,300);
+}
+
+function isRelevant(t) {
+  const l = t.toLowerCase();
+  return RELEVANCE.some(k => l.includes(k));
+}
+
+function inferTags(text) {
+  const l = text.toLowerCase();
+  const tags = [];
+  if (/iran|tehran|irgc|nuclear|hormuz/i.test(l)) tags.push('iran');
+  if (/oil|crude|opec|brent|petroleum|energy|barrel/i.test(l)) tags.push('oil');
+  if (/war|attack|strike|conflict|missile|drone|military|bomb/i.test(l)) tags.push('conflict');
+  if (/economy|market|sanction|inflation|financial|recession/i.test(l)) tags.push('economy');
+  if (!tags.length) tags.push('news');
+  return tags;
+}
+
+function timeAgo(d) {
+  if (!d) return '';
+  const ms = Date.now() - new Date(d);
+  if (isNaN(ms) || ms < 0) return '';
+  const m = Math.floor(ms/60000);
+  if (m < 2) return 'Just now';
+  if (m < 60) return m + 'm ago';
+  const h = Math.floor(m/60);
+  if (h < 24) return h + 'h ago';
+  return Math.floor(h/24) + 'd ago';
+}
+
+function esc(s) {
+  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function tagCls(t) {
+  if (t==='iran'||t==='conflict') return 'tr';
+  if (t==='oil'||t==='economy')   return 'ta';
+  if (t==='news')                 return 'tt';
+  return 'tg';
+}
+
+function matchFilter(a) {
+  if (activeFilter === 'all') return true;
+  const kw = FILTER_KW[activeFilter] || [];
+  const txt = (a.title + ' ' + a.desc).toLowerCase();
+  return kw.some(k => txt.includes(k)) || a.tags.includes(activeFilter);
+}
+
+// ─── RENDER ───────────────────────────────────────────────────────────────────
+function renderCards() {
+  const grid = document.getElementById('grid');
+  const list = articles.filter(matchFilter);
+
+  if (!articles.length) {
+    const okCount = Object.values(feedStat).filter(s => s.ok).length;
+    if (okCount === 0) {
+      grid.innerHTML = `<div class="state">
+        <div class="stxt" style="color:var(--red)">⚠ All feeds failed</div>
+        <div class="stxt2">
+          All 3 proxy services returned errors.<br>
+          This may be a temporary outage — try again in a minute.<br><br>
+          <button class="rb" style="padding:.4rem 1rem;font-size:.65rem" onclick="loadFeeds()">↻ Retry</button>
+        </div>
+      </div>`;
+    } else {
+      grid.innerHTML = `<div class="state"><div class="spin"></div><div class="stxt">Processing…</div></div>`;
+    }
+    return;
+  }
+
+  if (!list.length) {
+    grid.innerHTML = `<div class="state"><div class="stxt">No articles match this filter</div></div>`;
+    return;
+  }
+
+  grid.innerHTML = list.map((a, i) => {
+    const pc = a.tags.includes('iran')||a.tags.includes('conflict') ? 'p1'
+             : a.tags.includes('oil')||a.tags.includes('economy')   ? 'p2' : 'p3';
+    const delay = Math.min(i * 0.028, 1.1);
+    const tagHTML = a.tags.slice(0,3).map(t=>`<span class="tag ${tagCls(t)}">${esc(t)}</span>`).join('');
+    const ago = timeAgo(a.date);
+    return `<div class="card ${pc}" style="animation-delay:${delay}s">
+  <div class="cs">
+    <div class="csrc"><span class="sdot" style="background:${esc(a.color)}"></span>${esc(a.source)}</div>
+    ${ago?`<span class="ctime">${esc(ago)}</span>`:''}
+  </div>
+  <div class="ctitle">${esc(a.title)}</div>
+  ${a.desc?`<div class="cexc">${esc(a.desc)}</div>`:''}
+  <div class="ctags">${tagHTML}</div>
+  <a class="clink" href="${esc(a.link)}" target="_blank" rel="noopener noreferrer">
+    Read Full Article
+    <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 5h6M5 2l3 3-3 3"/></svg>
+  </a>
+</div>`;
+  }).join('');
+}
+
+function showLoading() {
+  document.getElementById('grid').innerHTML = `<div class="state">
+    <div class="spin"></div>
+    <div class="stxt">Fetching intelligence feeds…</div>
+    <div class="progress-wrap"><div class="progress-bar" id="prog"></div></div>
+    <div class="prog-lbl" id="prog-lbl">0 / ${FEEDS.length} sources</div>
+  </div>`;
+}
+
+function updateProgress(done, total) {
+  const p = document.getElementById('prog');
+  const l = document.getElementById('prog-lbl');
+  if (p) p.style.width = Math.round(done/total*100) + '%';
+  if (l) l.textContent = done + ' / ' + total + ' sources';
+}
+
+function setStatusBar(state) {
+  const bar = document.getElementById('sbar');
+  if (state === 'loading') {
+    bar.innerHTML = FEEDS.map(f=>`<span class="si load">${f.name}</span>`).join('');
+    return;
+  }
+  bar.innerHTML = FEEDS.map(f => {
+    const s = feedStat[f.name]||{ok:false,n:0};
+    return `<span class="si ${s.ok?'ok':'err'}">${f.name} (${s.n})</span>`;
+  }).join('');
+}
+
+function updateSrcList() {
+  document.getElementById('src-list').innerHTML = FEEDS.map(f => {
+    const s = feedStat[f.name]||{ok:false,n:0};
+    return `<div class="src-row">
+  <div class="src-n"><span style="width:7px;height:7px;border-radius:50%;background:${f.color};display:inline-block;flex-shrink:0"></span>${f.name}</div>
+  <div style="display:flex;align-items:center;gap:.42rem">
+    <span class="src-c">${s.n}</span>
+    <span style="color:${s.ok?'#4ade80':'var(--red)'};font-family:var(--f2);font-size:.59rem">${s.ok?'✓':'✗'}</span>
+  </div>
+</div>`;
+  }).join('');
+}
+
+function updateHeader() {
+  const n = articles.filter(matchFilter).length;
+  document.getElementById('hdr-count').textContent = n;
+  document.getElementById('hdr-time').textContent =
+    new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
+}
+
+function updateTicker() {
+  if (!articles.length) return;
+  const text = articles.slice(0,14).map(a=>' // '+a.title).join('   ');
+  document.getElementById('ticker').textContent = text + '   ';
+}
+
+function setFilter(f, btn) {
+  activeFilter = f;
+  document.querySelectorAll('.fb').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  renderCards();
+  updateHeader();
+}
+
+function resetCountdown() {
+  countdown = 300;
+  if (cdTimer) clearInterval(cdTimer);
+  cdTimer = setInterval(() => {
+    countdown--;
+    const m = Math.floor(countdown/60), s = countdown%60;
+    document.getElementById('cd').textContent = m+':'+(s<10?'0':'')+s;
+    if (countdown <= 0) { clearInterval(cdTimer); loadFeeds(); }
+  }, 1000);
+}
+
+// ─── GO ───────────────────────────────────────────────────────────────────────
+loadFeeds();
+fetchOilPrices();
+setInterval(fetchOilPrices, 5 * 60 * 1000); // refresh oil every 5 min
+
+// ─── REAL-TIME OIL PRICES ─────────────────────────────────────────────────────
+// Strategy: stooq.com CSV (no key, reliable) → Yahoo Finance fallback → last-known cache
+const oilCache = {};
+
+async function fetchOilPrices() {
+  // stooq symbols for oil futures
+  const symbols = [
+    { stooq:'@CL.F',  yf:'CL=F',  name:'wti',    label:'WTI Crude',   prefix:'$' },
+    { stooq:'@CO.F',  yf:'BZ=F',  name:'brent',  label:'Brent Crude', prefix:'$' },
+    { stooq:'@NG.F',  yf:'NG=F',  name:'natgas', label:'Nat. Gas',    prefix:'$' },
+    { stooq:'@RB.F',  yf:'RB=F',  name:'rbob',   label:'RBOB Gas',    prefix:'$' },
+  ];
+
+  let successCount = 0;
+  const PROXIES_OIL = [
+    url => 'https://corsproxy.io/?' + encodeURIComponent(url),
+    url => 'https://api.allorigins.win/get?url=' + encodeURIComponent(url),
+  ];
+
+  for (const sym of symbols) {
+    let fetched = false;
+
+    // ── Method 1: stooq CSV ──────────────────────────────────────────────
+    for (const buildProxy of PROXIES_OIL) {
+      if (fetched) break;
+      try {
+        const stooqUrl = `https://stooq.com/q/d/l/?s=${sym.stooq}&i=d`;
+        const proxied  = buildProxy(stooqUrl);
+        const res = await fetch(proxied, { signal: AbortSignal.timeout(9000) });
+        if (!res.ok) continue;
+
+        let text;
+        if (proxied.includes('allorigins')) {
+          const j = await res.json();
+          text = j.contents;
+        } else {
+          text = await res.text();
+        }
+
+        // stooq CSV: Date,Open,High,Low,Close,Volume
+        const lines = text.trim().split('\n').filter(l => l && !l.startsWith('Date'));
+        if (!lines.length) continue;
+        const last = lines[lines.length - 1].split(',');
+        const prev = lines.length > 1 ? lines[lines.length - 2].split(',') : null;
+        const price = parseFloat(last[4]); // Close
+        const prevPrice = prev ? parseFloat(prev[4]) : price;
+        if (isNaN(price) || price <= 0) continue;
+
+        renderOilSymbol(sym, price, prevPrice, 'stooq');
+        successCount++;
+        fetched = true;
+      } catch(e) { /* try next */ }
+    }
+
+    // ── Method 2: Yahoo Finance JSON via proxy ───────────────────────────
+    if (!fetched) {
+      for (const buildProxy of PROXIES_OIL) {
+        if (fetched) break;
+        try {
+          const yfUrl  = `https://query2.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(sym.yf)}?interval=1d&range=5d`;
+          const proxied = buildProxy(yfUrl);
+          const res = await fetch(proxied, { signal: AbortSignal.timeout(9000) });
+          if (!res.ok) continue;
+
+          let data;
+          if (proxied.includes('allorigins')) {
+            const j = await res.json();
+            data = JSON.parse(j.contents);
+          } else {
+            data = await res.json();
+          }
+
+          const meta = data?.chart?.result?.[0]?.meta;
+          if (!meta) continue;
+          const price = meta.regularMarketPrice ?? meta.previousClose;
+          const prev  = meta.previousClose ?? meta.chartPreviousClose;
+          if (!price) continue;
+
+          renderOilSymbol(sym, price, prev, 'yahoo');
+          successCount++;
+          fetched = true;
+        } catch(e) { /* try next */ }
+      }
+    }
+
+    // ── Method 3: Show cached value if available ─────────────────────────
+    if (!fetched && oilCache[sym.name]) {
+      const c = oilCache[sym.name];
+      renderOilSymbol(sym, c.price, c.prev, 'cached');
+    }
+  }
+
+  const noteEl  = document.getElementById('oil-note');
+  const badgeEl = document.getElementById('oil-live-badge');
+  const now = new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
+
+  if (successCount >= 3) {
+    if (noteEl)  noteEl.textContent  = `Live via market data · Updated ${now}`;
+    if (badgeEl) { badgeEl.textContent = '● live'; badgeEl.className = 'oil-live'; }
+  } else if (successCount > 0) {
+    if (noteEl)  noteEl.textContent  = `Partial data · ${now} · Some feeds delayed`;
+    if (badgeEl) { badgeEl.textContent = '● partial'; badgeEl.className = 'oil-live'; }
+  } else {
+    if (noteEl)  noteEl.textContent  = '⚠ Live prices unavailable · Market may be closed or outside trading hours';
+    if (badgeEl) { badgeEl.textContent = '● offline'; badgeEl.className = 'oil-stale'; }
+  }
+}
+
+function renderOilSymbol(sym, price, prev, source) {
+  // Cache it
+  oilCache[sym.name] = { price, prev, source };
+
+  const chg  = price - prev;
+  const pct  = prev ? (chg / prev * 100) : 0;
+  const up   = chg >= 0;
+  const sign = up ? '+' : '';
+  const cls  = up ? 'up' : 'dn';
+
+  const priceStr = sym.prefix + price.toFixed(2);
+  const chgStr   = sign + pct.toFixed(2) + '%';
+
+  const opEl = document.getElementById('op-' + sym.name);
+  const ocEl = document.getElementById('oc-' + sym.name);
+  if (opEl) opEl.textContent = priceStr;
+  if (ocEl) { ocEl.textContent = chgStr; ocEl.className = 'oc ' + cls; }
+
+  if (sym.name === 'brent') {
+    const h = document.getElementById('hdr-brent');
+    if (h) { h.textContent = priceStr; h.className = 'hm-v ' + cls; }
+  }
+  if (sym.name === 'wti') {
+    const h = document.getElementById('hdr-wti');
+    if (h) { h.textContent = priceStr; h.className = 'hm-v ' + cls; }
+  }
+}
+
+// ─── FORECASTING ENGINE ───────────────────────────────────────────────────────
+// Purely keyword-signal driven, no AI API
+const FORECAST_SIGNALS = {
+  escalation: {
+    label: 'Escalation',
+    keywords: ['attack','strike','missile','bomb','war','military','troops','invasion','assault','artillery','airstrike','offensive','ballistic','explosion','casualties','killed','wounded'],
+    weight: 3
+  },
+  diplomacy: {
+    label: 'Diplomacy',
+    keywords: ['ceasefire','negotiation','talks','deal','agreement','diplomatic','summit','peace','truce','accord','sanction relief','withdrawal','treaty'],
+    weight: 2
+  },
+  oil_disruption: {
+    label: 'Oil Disruption',
+    keywords: ['tanker','pipeline','blockade','hormuz','opec','cut','disruption','supply','shortage','refinery','embargo','seizure','sabotage'],
+    weight: 3
+  },
+  oil_easing: {
+    label: 'Oil Easing',
+    keywords: ['production increase','opec+','release','strategic reserve','surplus','glut','oversupply','pumping','output boost'],
+    weight: 2
+  },
+  nuclear: {
+    label: 'Nuclear Risk',
+    keywords: ['nuclear','enrichment','uranium','centrifuge','iaea','jcpoa','proliferation','warhead','weapon-grade','plutonium'],
+    weight: 4
+  },
+  sanctions: {
+    label: 'Sanctions',
+    keywords: ['sanction','embargo','freeze','ban','restriction','penalty','blocked','asset','financial pressure'],
+    weight: 2
+  },
+  economic_stress: {
+    label: 'Econ Stress',
+    keywords: ['inflation','recession','market crash','selloff','rally','volatility','risk-off','flight to safety','gold','dollar','crisis'],
+    weight: 2
+  }
+};
+
+function runForecast(arts) {
+  if (!arts.length) return;
+
+  const section = document.getElementById('forecast-section');
+  section.style.display = 'block';
+
+  const allText = arts.map(a => (a.title + ' ' + a.desc).toLowerCase()).join(' ');
+
+  // Count signal hits
+  const hits = {};
+  const keywordFound = [];
+
+  for (const [key, sig] of Object.entries(FORECAST_SIGNALS)) {
+    let count = 0;
+    for (const kw of sig.keywords) {
+      const re = new RegExp('\\b' + kw.replace(/[+]/g,'\\+') + '\\b','gi');
+      const matches = allText.match(re);
+      if (matches) {
+        count += matches.length;
+        if (matches.length >= 2) keywordFound.push({ kw, count: matches.length, type: key });
+      }
+    }
+    hits[key] = count;
+  }
+
+  // Derived scores (0-100)
+  const escScore  = Math.min(100, hits.escalation  * 4);
+  const dipScore  = Math.min(100, hits.diplomacy   * 6);
+  const oilDisrScore = Math.min(100, hits.oil_disruption * 5);
+  const oilEaseScore = Math.min(100, hits.oil_easing * 8);
+  const nucScore  = Math.min(100, hits.nuclear     * 7);
+  const sancScore = Math.min(100, hits.sanctions   * 6);
+  const econScore = Math.min(100, hits.economic_stress * 5);
+
+  // Net oil pressure: positive = bullish price pressure, negative = bearish
+  const oilPressure = oilDisrScore - oilEaseScore + (escScore * 0.4) + (nucScore * 0.3) - (dipScore * 0.3);
+  const oilPressureNorm = Math.max(-100, Math.min(100, oilPressure));
+
+  // Overall threat index
+  const threatIndex = Math.min(100, Math.round((escScore * 0.35 + nucScore * 0.3 + oilDisrScore * 0.2 + sancScore * 0.15)));
+
+  // Price outlook
+  let priceOutlook, priceClass, priceDesc;
+  if (oilPressureNorm > 55) {
+    priceOutlook = 'STRONGLY BULLISH'; priceClass = 'warn';
+    priceDesc = 'Multiple supply-disruption signals dominate the feed. Significant upward price pressure likely in near term.';
+  } else if (oilPressureNorm > 25) {
+    priceOutlook = 'BULLISH'; priceClass = 'bull';
+    priceDesc = 'Escalation and disruption signals outweigh easing factors. Moderate upward price pressure.';
+  } else if (oilPressureNorm > -10) {
+    priceOutlook = 'NEUTRAL'; priceClass = 'neut';
+    priceDesc = 'Signals are mixed. Diplomatic and escalation factors roughly offset. Watch for breakout news.';
+  } else if (oilPressureNorm > -35) {
+    priceOutlook = 'BEARISH'; priceClass = 'bear';
+    priceDesc = 'Supply-easing or diplomatic signals are gaining ground. Mild downward pressure possible.';
+  } else {
+    priceOutlook = 'STRONGLY BEARISH'; priceClass = 'bear';
+    priceDesc = 'Strong diplomatic or supply-easing narrative. Significant de-escalation could weigh on prices.';
+  }
+
+  // Conflict trajectory
+  let conflictOutlook, conflictClass;
+  if (escScore > 60 && dipScore < 20) { conflictOutlook = 'ESCALATING'; conflictClass = 'warn'; }
+  else if (escScore > 40 && dipScore < 40) { conflictOutlook = 'HEIGHTENED'; conflictClass = 'bull'; }
+  else if (dipScore > escScore) { conflictOutlook = 'DE-ESCALATING'; conflictClass = 'bear'; }
+  else { conflictOutlook = 'VOLATILE'; conflictClass = 'neut'; }
+
+  // Nuclear risk
+  let nucOutlook, nucClass;
+  if (nucScore > 50) { nucOutlook = 'HIGH FOCUS'; nucClass = 'warn'; }
+  else if (nucScore > 25) { nucOutlook = 'ACTIVE'; nucClass = 'bull'; }
+  else { nucOutlook = 'LOW'; nucClass = 'neut'; }
+
+  // Total articles and recency
+  const recent = arts.filter(a => {
+    const ms = Date.now() - new Date(a.date);
+    return !isNaN(ms) && ms < 6 * 60 * 60 * 1000; // 6h
+  }).length;
+
+  // Render forecast cards
+  document.getElementById('fp-cards').innerHTML = [
+    { label:'Oil Price Outlook', val: priceOutlook, cls: priceClass, desc: priceDesc },
+    { label:'Conflict Trajectory', val: conflictOutlook, cls: conflictClass, desc: `Escalation signal intensity: ${escScore}/100. Diplomacy signal: ${dipScore}/100.` },
+    { label:'Nuclear Risk Focus', val: nucOutlook, cls: nucClass, desc: `${hits.nuclear} nuclear-related signals detected across ${arts.length} articles.` },
+    { label:'Threat Index', val: threatIndex + '/100', cls: threatIndex > 65 ? 'warn' : threatIndex > 35 ? 'bull' : 'neut', desc: `Composite score from escalation, nuclear, oil-disruption and sanctions signals.` },
+  ].map(c => `<div class="fp-card">
+    <div class="fpc-label">${esc(c.label)}</div>
+    <div class="fpc-val ${c.cls}">${esc(c.val)}</div>
+    <div class="fpc-desc">${esc(c.desc)}</div>
+  </div>`).join('');
+
+  // Render keyword signals (top 20 by count)
+  const topKw = keywordFound
+    .sort((a,b) => b.count - a.count)
+    .slice(0, 22)
+    .filter(k => k.count > 0);
+
+  document.getElementById('fp-signals').innerHTML = topKw.map(k => {
+    const type = k.type;
+    const cls = (type==='escalation'||type==='nuclear') ? 'sig-hot'
+              : (type==='oil_disruption'||type==='economic_stress') ? 'sig-warm'
+              : 'sig-cool';
+    return `<span class="sig ${cls}">${esc(k.kw)}<span class="sig-cnt">${k.count}</span></span>`;
+  }).join('') || '<span style="font-family:var(--f2);font-size:.55rem;color:var(--t4)">No dominant signals detected yet</span>';
+
+  // Render bars
+  const barData = [
+    { label: 'Escalation',    val: escScore,       color: 'var(--red)' },
+    { label: 'Oil Disruption', val: oilDisrScore,  color: 'var(--amb)' },
+    { label: 'Nuclear',       val: nucScore,        color: '#f43f5e' },
+    { label: 'Sanctions',     val: sancScore,       color: '#8b5cf6' },
+    { label: 'Diplomacy',     val: dipScore,        color: 'var(--teal)' },
+    { label: 'Econ Stress',   val: econScore,       color: '#ec4899' },
+  ];
+  document.getElementById('fp-bars').innerHTML = barData.map(b => `<div class="fpb-row">
+    <div class="fpb-lbl">${esc(b.label)}</div>
+    <div class="fpb-track"><div class="fpb-fill" style="width:${b.val}%;background:${b.color}"></div></div>
+    <div class="fpb-pct">${b.val}</div>
+  </div>`).join('');
+
+  // ── UNIFIED TRAJECTORY ────────────────────────────────────────────────────────
+  // Synthesize all signals into one directional verdict
+  const totalSignalMass = escScore + oilDisrScore + nucScore + sancScore + econScore;
+  const calmSignalMass  = dipScore + oilEaseScore;
+
+  // Net tension score: >0 = heating up, <0 = cooling
+  const netTension = (escScore * 0.35 + oilDisrScore * 0.25 + nucScore * 0.25 + sancScore * 0.1 + econScore * 0.05)
+                   - (dipScore * 0.5 + oilEaseScore * 0.5);
+  const netNorm = Math.max(-100, Math.min(100, netTension));
+
+  let trajLabel, trajArrow, trajColor, trajBg, trajDesc, trajTags;
+
+  if (netNorm > 60) {
+    trajLabel = 'SEVERE ESCALATION';
+    trajArrow = '↑↑';
+    trajColor = 'var(--red)';
+    trajBg = 'rgba(232,50,16,.05)';
+    trajDesc = 'All major signal categories are firing simultaneously. Conflict escalation and supply disruption risk are both elevated. Expect significant oil price pressure and heightened market volatility. Near-term de-escalation appears unlikely based on current signals.';
+    trajTags = ['Critical Risk','Oil Shock Likely','Market Volatility','Watch Hormuz'];
+  } else if (netNorm > 30) {
+    trajLabel = 'ESCALATING';
+    trajArrow = '↑';
+    trajColor = '#f97316';
+    trajBg = 'rgba(249,115,22,.04)';
+    trajDesc = 'Escalation and disruption signals clearly dominate the feed. Diplomatic counter-signals exist but are insufficient to offset the pressure. Oil markets face upward bias. Geopolitical risk premium likely expanding.';
+    trajTags = ['Rising Tension','Oil Price Pressure','Monitor Closely'];
+  } else if (netNorm > 5) {
+    trajLabel = 'TENSE — LEANING HAWKISH';
+    trajArrow = '↗';
+    trajColor = 'var(--amb)';
+    trajBg = 'rgba(217,119,6,.04)';
+    trajDesc = 'Conditions are tense with a mild escalatory lean. Dominant signals suggest continued disruption risk, though no decisive breakout is evident. A single catalyst event could tip the balance.';
+    trajTags = ['Cautious Watch','Mixed Signals','Catalyst Risk'];
+  } else if (netNorm >= -5) {
+    trajLabel = 'VOLATILE — INDETERMINATE';
+    trajArrow = '↔';
+    trajColor = 'var(--t2)';
+    trajBg = 'rgba(110,145,173,.04)';
+    trajDesc = 'Escalation and de-escalation signals are roughly balanced. The situation is fluid and directionally unclear. Elevated uncertainty makes short-term forecasting unreliable. Watch for decisive signal breaks in either direction.';
+    trajTags = ['High Uncertainty','Wait & Watch','Balanced Signals'];
+  } else if (netNorm > -30) {
+    trajLabel = 'EASING — DIPLOMATIC TILT';
+    trajArrow = '↘';
+    trajColor = '#22d3ee';
+    trajBg = 'rgba(14,165,194,.04)';
+    trajDesc = 'Diplomatic and supply-easing signals are gaining ground over conflict language. A de-escalation window may be opening. Oil price pressure is likely easing, though the situation remains sensitive to reversal.';
+    trajTags = ['Diplomatic Activity','Supply Easing','Price Softening Possible'];
+  } else {
+    trajLabel = 'DE-ESCALATING';
+    trajArrow = '↓';
+    trajColor = '#4ade80';
+    trajBg = 'rgba(74,222,128,.04)';
+    trajDesc = 'Strong diplomatic and supply-normalization signals dominate. Conflict language is receding in the feed. Oil price risk premium likely contracting. Near-term risk of new disruptions appears lower than baseline.';
+    trajTags = ['De-escalation Signal','Oil Pressure Easing','Risk Premium Falling'];
+  }
+
+  const trajEl = document.getElementById('fp-trajectory');
+  const trajBgEl = document.getElementById('fp-traj-bg');
+  trajEl.style.display = 'block';
+  trajEl.style.borderColor = trajColor;
+  trajEl.style.borderLeftWidth = '3px';
+  trajEl.style.background = trajBg;
+  document.getElementById('fp-traj-arrow').textContent = trajArrow;
+  document.getElementById('fp-traj-arrow').style.color = trajColor;
+  document.getElementById('fp-traj-label').textContent = trajLabel;
+  document.getElementById('fp-traj-label').style.color = trajColor;
+  document.getElementById('fp-traj-desc').textContent = trajDesc;
+  document.getElementById('fp-traj-tags').innerHTML = trajTags.map(t =>
+    `<span style="font-family:var(--f2);font-size:.47rem;letter-spacing:.09em;text-transform:uppercase;padding:.12rem .45rem;border-radius:1px;border:1px solid ${trajColor};color:${trajColor};opacity:.8">${esc(t)}</span>`
+  ).join('');
+
+  // Narrative summary
+  const dominant = [...barData].sort((a,b) => b.val - a.val)[0];
+  const now = new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
+  document.getElementById('fp-meta').textContent =
+    `Based on ${arts.length} articles · ${recent} from last 6h · Updated ${now}`;
+
+  let summary = `Based on current feed signals, the <strong>dominant theme is ${dominant.label}</strong> (score: ${dominant.val}/100). `;
+
+  if (escScore > 50) summary += `Heavy escalation language suggests active conflict developments. `;
+  if (nucScore > 30) summary += `Nuclear program mentions are elevated — watch for IAEA statements or diplomatic shifts. `;
+  if (oilDisrScore > 40) summary += `Oil supply disruption signals are significant; <strong>Brent and WTI likely face upward pressure</strong>. `;
+  if (dipScore > escScore) summary += `Diplomatic signals are outpacing conflict signals — a de-escalation window may be forming. `;
+  if (sancScore > 30) summary += `Sanctions activity signals continued economic pressure on Iran. `;
+  if (econScore > 30) summary += `Economic stress keywords suggest broader market volatility contagion risk. `;
+
+  summary += `Oil price outlook: <strong>${priceOutlook}</strong>. Unified trajectory: <strong>${trajLabel}</strong>.`;
+
+  document.getElementById('fp-summary-txt').innerHTML = summary;
+}
+</script>
+</body>
+</html>
