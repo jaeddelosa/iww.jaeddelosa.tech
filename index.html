@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>IRANWARWATCH — Iran War & Global Oil Crisis Intelligence</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:ital,wght@0,400;0,600;1,400&family=Playfair+Display:ital,wght@0,800;1,700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#05080d;
+  --ink2:#090d14;
+  --ink3:#0e141e;
+  --red:#d42a0a;
+  --red2:#8c1c07;
+  --red3:rgba(212,42,10,.08);
+  --amber:#c47a00;
+  --paper:#dce8f0;
+  --paper2:#8fa8bc;
+  --paper3:#3d5569;
+  --paper4:#1e2f3e;
+  --line:rgba(220,232,240,.07);
+  --f1:'Bebas Neue',sans-serif;
+  --f2:'IBM Plex Mono',monospace;
+  --f3:'Playfair Display',serif;
+  --teal:#0e9db8;
+  --purple:#7c3aed;
+  --green:#1a9e5c;
+}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--paper);font-family:var(--f2);overflow-x:hidden}
+
+/* scanlines */
+body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.05) 2px,rgba(0,0,0,.05) 3px);pointer-events:none;z-index:9999}
+
+/* ── EMERGENCY TAPE ── */
+.tape{background:var(--red);overflow:hidden;white-space:nowrap;padding:.3rem 0;position:relative;z-index:200}
+.tape-track{display:inline-block;animation:scroll-tape 28s linear infinite}
+.tape-track span{font-family:var(--f1);font-size:.75rem;letter-spacing:.25em;color:#fff;margin:0 2rem}
+.tape-track .sep{opacity:.4}
+@keyframes scroll-tape{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── NAV ── */
+nav{
+  position:sticky;top:0;z-index:300;
+  background:rgba(5,8,13,.96);backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--line);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.8rem clamp(1.2rem,5vw,3.5rem);gap:1rem;
+}
+.n-logo{display:flex;flex-direction:column;gap:2px}
+.n-name{font-family:var(--f1);font-size:1.4rem;letter-spacing:.12em;color:var(--red);line-height:1;text-shadow:0 0 24px rgba(212,42,10,.35)}
+.n-sub{font-family:var(--f2);font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:var(--paper3)}
+.n-right{display:flex;align-items:center;gap:.6rem}
+.n-live{display:flex;align-items:center;gap:.35rem;font-family:var(--f2);font-size:.55rem;letter-spacing:.1em;color:var(--red);border:1px solid var(--red2);padding:.22rem .6rem}
+.n-dot{width:5px;height:5px;border-radius:50%;background:var(--red);animation:blink 1.5s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.15}}
+.n-btn{font-family:var(--f2);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;padding:.4rem 1rem;background:var(--red);color:#fff;text-decoration:none;border:1px solid var(--red);transition:all .2s;white-space:nowrap}
+.n-btn:hover{background:transparent;color:var(--red)}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;display:grid;
+  grid-template-rows:1fr auto;
+  padding:clamp(4rem,10vh,8rem) clamp(1.2rem,5vw,3.5rem) clamp(2rem,5vh,4rem);
+  position:relative;overflow:hidden;
+}
+
+/* coordinate grid */
+.hero-grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(var(--line) 1px,transparent 1px),
+    linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:80px 80px;
+}
+/* red glow from bottom */
+.hero-glow{
+  position:absolute;bottom:-20%;left:50%;transform:translateX(-50%);
+  width:900px;height:500px;
+  background:radial-gradient(ellipse,rgba(212,42,10,.1) 0%,transparent 65%);
+  pointer-events:none;
+}
+/* diagonal slash */
+.hero-slash{
+  position:absolute;right:0;top:0;bottom:0;width:45%;
+  background:linear-gradient(170deg,transparent 44%,rgba(212,42,10,.03) 44%,rgba(212,42,10,.03) 56%,transparent 56%);
+  pointer-events:none;
+}
+
+.hero-body{position:relative;z-index:1;max-width:900px}
+
+.hero-eyebrow{
+  font-family:var(--f2);font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--red);margin-bottom:1.5rem;
+  display:flex;align-items:center;gap:.7rem;
+  animation:up .7s ease both;
+}
+.hero-eyebrow::before{content:'';width:24px;height:1px;background:var(--red)}
+
+.hero-h1{
+  font-family:var(--f1);
+  font-size:clamp(5rem,16vw,14rem);
+  line-height:.86;letter-spacing:.02em;
+  margin-bottom:2rem;
+  animation:up .8s .08s ease both;
+}
+.h1-ghost{-webkit-text-stroke:1px rgba(220,232,240,.15);color:transparent}
+.h1-solid{color:var(--paper)}
+.h1-red{color:var(--red);text-shadow:0 0 80px rgba(212,42,10,.25)}
+
+.hero-deck{
+  max-width:600px;
+  font-family:var(--f3);font-style:italic;
+  font-size:clamp(1rem,2.2vw,1.3rem);
+  color:var(--paper2);line-height:1.65;
+  margin-bottom:2.5rem;
+  animation:up .8s .16s ease both;
+}
+
+.hero-cta{
+  display:flex;align-items:center;gap:1rem;flex-wrap:wrap;
+  animation:up .8s .22s ease both;
+}
+.btn-launch{
+  font-family:var(--f2);font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;
+  padding:.75rem 2rem;background:var(--red);color:#fff;
+  text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;
+  border:1px solid var(--red);transition:all .2s;
+}
+.btn-launch:hover{background:transparent;color:var(--red);box-shadow:0 0 30px rgba(212,42,10,.18)}
+.btn-launch svg{width:11px;height:11px}
+.btn-ghost{
+  font-family:var(--f2);font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;
+  padding:.75rem 1.5rem;background:transparent;color:var(--paper3);
+  text-decoration:none;border:1px solid var(--paper4);transition:all .2s;
+}
+.btn-ghost:hover{border-color:var(--paper2);color:var(--paper)}
+
+/* hero bottom bar */
+.hero-bar{
+  position:relative;z-index:1;
+  border-top:1px solid var(--line);
+  padding-top:1.5rem;
+  display:flex;gap:3rem;flex-wrap:wrap;
+  animation:up .8s .3s ease both;
+}
+.hb-item{display:flex;flex-direction:column;gap:3px}
+.hb-val{font-family:var(--f1);font-size:2rem;letter-spacing:.06em;color:var(--paper);line-height:1}
+.hb-val.red{color:var(--red)}
+.hb-lbl{font-family:var(--f2);font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;color:var(--paper3)}
+
+/* dossier corner stamp */
+.stamp{
+  position:absolute;right:clamp(1rem,6vw,5rem);top:clamp(4rem,12vh,9rem);
+  font-family:var(--f1);font-size:clamp(1.5rem,3.5vw,3rem);
+  letter-spacing:.22em;color:transparent;
+  border:2.5px solid var(--red);padding:.4rem 1rem;
+  opacity:.1;transform:rotate(-10deg);pointer-events:none;
+  animation:up 1s .4s ease both;
+  white-space:nowrap;
+}
+@media(max-width:800px){.stamp{display:none}}
+
+@keyframes up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── SECTION WRAPPER ── */
+.s{padding:clamp(4rem,9vw,7rem) clamp(1.2rem,5vw,3.5rem)}
+.s-inner{max-width:1240px;margin:0 auto}
+.s-label{font-family:var(--f2);font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:.9rem;display:flex;align-items:center;gap:.55rem}
+.s-label::before{content:'';width:16px;height:1px;background:var(--red)}
+.s-h2{font-family:var(--f1);font-size:clamp(2.5rem,6vw,5.5rem);letter-spacing:.04em;line-height:.9;color:var(--paper);margin-bottom:1.2rem}
+.s-body{font-family:var(--f2);font-size:.67rem;color:var(--paper2);line-height:1.9;letter-spacing:.03em;max-width:640px}
+hr.rule{border:none;border-top:1px solid var(--line);margin:0 clamp(1.2rem,5vw,3.5rem)}
+
+/* ── CRISIS CONTEXT ── */
+.context-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:1px;
+  background:var(--line);margin-top:2.5rem;
+}
+@media(max-width:680px){.context-grid{grid-template-columns:1fr}}
+.ctx-cell{
+  background:var(--ink);padding:2rem;
+  position:relative;overflow:hidden;
+  transition:background .2s;
+}
+.ctx-cell:hover{background:var(--ink2)}
+.ctx-cell::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.ctx-cell:hover::before{transform:scaleX(1)}
+.ctx-icon{font-size:1.8rem;margin-bottom:1rem;display:block;line-height:1}
+.ctx-title{font-family:var(--f1);font-size:1.6rem;letter-spacing:.06em;color:var(--paper);margin-bottom:.7rem}
+.ctx-text{font-family:var(--f2);font-size:.62rem;color:var(--paper2);line-height:1.85;letter-spacing:.03em}
+.ctx-stat{
+  margin-top:1.2rem;padding-top:1rem;border-top:1px solid var(--line);
+  font-family:var(--f2);font-size:.55rem;color:var(--paper3);letter-spacing:.08em;
+  display:flex;align-items:baseline;gap:.5rem;
+}
+.ctx-stat strong{font-family:var(--f1);font-size:1.4rem;letter-spacing:.06em;color:var(--red)}
+
+/* ── THREAT STRIP ── */
+.threat-strip{
+  background:rgba(212,42,10,.05);
+  border-top:1px solid rgba(212,42,10,.2);
+  border-bottom:1px solid rgba(212,42,10,.2);
+  padding:1.5rem clamp(1.2rem,5vw,3.5rem);
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+  background-color:rgba(212,42,10,.04);
+}
+@media(max-width:700px){.threat-strip{grid-template-columns:1fr 1fr}}
+@media(max-width:420px){.threat-strip{grid-template-columns:1fr}}
+.ts-item{padding:1rem 1.2rem;display:flex;flex-direction:column;gap:.35rem}
+.ts-val{font-family:var(--f1);font-size:1.8rem;letter-spacing:.06em;color:var(--paper);line-height:1}
+.ts-val.red{color:var(--red)}.ts-val.amb{color:var(--amber)}
+.ts-lbl{font-family:var(--f2);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:var(--paper3)}
+.ts-note{font-family:var(--f2);font-size:.5rem;color:var(--paper4);letter-spacing:.05em;margin-top:.1rem}
+
+/* ── REGIONS ── */
+.region-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:var(--line);margin-top:2.5rem;
+}
+@media(max-width:720px){.region-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:440px){.region-grid{grid-template-columns:1fr}}
+.rg{
+  background:var(--ink);padding:1.6rem;
+  display:flex;gap:1rem;align-items:flex-start;
+  transition:background .2s;
+}
+.rg:hover{background:var(--ink2)}
+.rg-flag{font-size:1.5rem;flex-shrink:0;line-height:1;margin-top:.1rem}
+.rg-name{font-family:var(--f1);font-size:1.2rem;letter-spacing:.06em;color:var(--paper);margin-bottom:.2rem}
+.rg-why{font-family:var(--f2);font-size:.56rem;color:var(--paper3);letter-spacing:.05em;line-height:1.7;margin-bottom:.5rem}
+.rg-status{font-family:var(--f2);font-size:.5rem;letter-spacing:.1em;text-transform:uppercase}
+.s-crit{color:var(--red)}.s-elev{color:var(--amber)}.s-watch{color:#0ea5c2}
+
+/* ── OIL CRISIS SECTION ── */
+.oil-layout{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;margin-top:2.5rem}
+@media(max-width:700px){.oil-layout{grid-template-columns:1fr}}
+.oil-text{font-family:var(--f2);font-size:.65rem;color:var(--paper2);line-height:1.9;letter-spacing:.03em}
+.oil-text strong{color:var(--paper)}
+.oil-text p+p{margin-top:1rem}
+.oil-metrics{display:flex;flex-direction:column;gap:1px;background:var(--line)}
+.om{
+  background:var(--ink);padding:1.2rem 1.4rem;
+  display:flex;justify-content:space-between;align-items:center;gap:1rem;
+  transition:background .2s;
+}
+.om:hover{background:var(--ink2)}
+.om-name{font-family:var(--f2);font-size:.6rem;color:var(--paper2);letter-spacing:.05em}
+.om-right{text-align:right}
+.om-val{font-family:var(--f1);font-size:1.4rem;letter-spacing:.06em;color:var(--paper);display:block;line-height:1}
+.om-chg{font-family:var(--f2);font-size:.52rem;margin-top:2px;display:block}
+.chg-up{color:var(--amber)}.chg-dn{color:#4ade80}
+.om-note{font-family:var(--f2);font-size:.5rem;color:var(--paper4);letter-spacing:.06em;padding:.9rem 1.4rem;background:var(--ink);border-top:1px solid var(--line)}
+
+/* ── CTA ── */
+.cta{
+  padding:clamp(5rem,12vh,9rem) clamp(1.2rem,5vw,3.5rem);
+  text-align:center;position:relative;overflow:hidden;
+  background:var(--ink2);border-top:1px solid var(--line);
+}
+.cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 50% 50%,rgba(212,42,10,.06),transparent 65%);pointer-events:none}
+.cta-kicker{font-family:var(--f2);font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:1.2rem;display:flex;align-items:center;justify-content:center;gap:.6rem}
+.cta-kicker::before,.cta-kicker::after{content:'';width:20px;height:1px;background:var(--red)}
+.cta-h{font-family:var(--f1);font-size:clamp(3rem,9vw,8rem);letter-spacing:.04em;line-height:.88;color:var(--paper);margin-bottom:1.4rem;position:relative}
+.cta-h .ghost{-webkit-text-stroke:1px rgba(220,232,240,.18);color:transparent}
+.cta-sub{font-family:var(--f3);font-style:italic;font-size:clamp(.9rem,1.8vw,1.15rem);color:var(--paper2);margin-bottom:2.5rem;line-height:1.65;max-width:460px;margin-left:auto;margin-right:auto}
+.cta-actions{display:flex;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap}
+
+/* ── FOOTER ── */
+/* ── DASHBOARD SECTION ── */
+.dash-s{padding:clamp(4rem,9vw,7rem) clamp(1.2rem,5vw,3.5rem);background:var(--ink2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.dash-inner{max-width:1240px;margin:0 auto}
+.dash-top{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-bottom:3rem}
+@media(max-width:700px){.dash-top{grid-template-columns:1fr;gap:2rem}}
+.dash-desc{font-family:var(--f2);font-size:.67rem;color:var(--paper2);line-height:1.9;letter-spacing:.03em}
+.dash-desc p+p{margin-top:.9rem}
+.dash-desc strong{color:var(--paper)}
+
+/* panel cards grid */
+.panels-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1px;background:rgba(220,232,240,.07)}
+.pcrd{
+  background:var(--ink);padding:1.4rem;
+  display:flex;flex-direction:column;gap:.8rem;
+  position:relative;overflow:hidden;
+  transition:background .2s;
+  text-decoration:none;color:inherit;
+}
+.pcrd:hover{background:#0c1219}
+.pcrd::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--c,var(--red));transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.pcrd:hover::before{transform:scaleX(1)}
+.pcrd-icon{font-size:1.5rem;line-height:1}
+.pcrd-title{font-family:var(--f1);font-size:1.3rem;letter-spacing:.08em;color:var(--paper);line-height:1}
+.pcrd-sub{font-family:var(--f2);font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:var(--paper3)}
+.pcrd-desc{font-family:var(--f2);font-size:.6rem;color:var(--paper3);line-height:1.75;letter-spacing:.03em;flex:1}
+.pcrd-tags{display:flex;gap:.35rem;flex-wrap:wrap}
+.ptag{font-family:var(--f2);font-size:.46rem;letter-spacing:.1em;text-transform:uppercase;padding:.12rem .4rem;border-radius:1px}
+.ptag-r{background:rgba(212,42,10,.1);color:var(--red);border:1px solid rgba(212,42,10,.2)}
+.ptag-a{background:rgba(196,122,0,.1);color:var(--amber);border:1px solid rgba(196,122,0,.2)}
+.ptag-t{background:rgba(14,157,184,.1);color:var(--teal);border:1px solid rgba(14,157,184,.2)}
+.ptag-p{background:rgba(124,58,237,.1);color:var(--purple);border:1px solid rgba(124,58,237,.2)}
+.ptag-g{background:rgba(26,158,92,.1);color:var(--green);border:1px solid rgba(26,158,92,.2)}
+.pcrd-new{position:absolute;top:.7rem;right:.7rem;font-family:var(--f2);font-size:.44rem;letter-spacing:.12em;text-transform:uppercase;background:rgba(212,42,10,.2);color:var(--red);border:1px solid rgba(212,42,10,.25);padding:.12rem .38rem}
+
+/* dashboard CTA block */
+.dash-cta-block{
+  margin-top:2.5rem;padding:2rem;
+  border:1px solid rgba(212,42,10,.2);
+  background:rgba(212,42,10,.04);
+  display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;
+  position:relative;overflow:hidden;
+}
+.dash-cta-block::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,var(--red),transparent)}
+.dcb-left{display:flex;flex-direction:column;gap:.4rem}
+.dcb-title{font-family:var(--f1);font-size:1.6rem;letter-spacing:.08em;color:var(--paper)}
+.dcb-sub{font-family:var(--f2);font-size:.58rem;color:var(--paper3);letter-spacing:.06em;line-height:1.7}
+.dcb-meta{display:flex;gap:1.2rem;flex-wrap:wrap;margin-top:.3rem}
+.dcb-stat{font-family:var(--f2);font-size:.54rem;color:var(--paper3);letter-spacing:.06em;display:flex;align-items:center;gap:.3rem}
+.dcb-stat b{color:var(--paper2)}
+.dcb-stat::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--red);flex-shrink:0}
+
+footer{
+  border-top:1px solid var(--line);
+  padding:1.2rem clamp(1.2rem,5vw,3.5rem);
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;
+}
+.ft-logo{font-family:var(--f1);font-size:1rem;letter-spacing:.14em;color:var(--red);opacity:.5}
+.ft-txt{font-family:var(--f2);font-size:.5rem;color:var(--paper4);letter-spacing:.07em;line-height:1.8}
+
+/* ── REVEAL ── */
+.rv{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.rv.in{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<!-- emergency tape -->
+<div class="tape">
+  <span class="tape-track">
+    <span>⬛ IRAN WAR MONITOR</span><span class="sep">///</span>
+    <span>STRAIT OF HORMUZ CLOSURE RISK</span><span class="sep">///</span>
+    <span>OPEC SUPPLY DISRUPTION</span><span class="sep">///</span>
+    <span>GLOBAL OIL CRISIS TRACKER</span><span class="sep">///</span>
+    <span>REAL-TIME INTELLIGENCE FEED</span><span class="sep">///</span>
+    <span>7 GLOBAL NEWS SOURCES</span><span class="sep">///</span>
+    <span>⬛ IRAN WAR MONITOR</span><span class="sep">///</span>
+    <span>STRAIT OF HORMUZ CLOSURE RISK</span><span class="sep">///</span>
+    <span>OPEC SUPPLY DISRUPTION</span><span class="sep">///</span>
+    <span>GLOBAL OIL CRISIS TRACKER</span><span class="sep">///</span>
+    <span>REAL-TIME INTELLIGENCE FEED</span><span class="sep">///</span>
+    <span>7 GLOBAL NEWS SOURCES</span><span class="sep">///</span>
+  </span>
+</div>
+
+<!-- nav -->
+<nav>
+  <div class="n-logo">
+    <div class="n-name">IRANWARWATCH</div>
+    <div class="n-sub">Iran &amp; Oil Crisis Intelligence</div>
+  </div>
+  <div class="n-right">
+    <div class="n-live"><span class="n-dot"></span>LIVE</div>
+    <a class="n-btn n-btn-ghost" href="#impact" style="background:transparent;color:var(--paper3);border:1px solid var(--paper4);margin-right:.3rem">Impact Dashboard</a>
+    <a class="n-btn" href="iran-crisis-news.html">News Feed →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-slash"></div>
+  <div class="stamp">CLASSIFIED</div>
+
+  <div class="hero-body">
+    <div class="hero-eyebrow">Active Situation Monitor — Iran Conflict &amp; Energy Crisis</div>
+    <h1 class="hero-h1">
+      <span class="h1-ghost">WAR</span><br>
+      <span class="h1-solid">WATCH</span>
+    </h1>
+    <p class="hero-deck">
+      A dedicated intelligence dashboard tracking the Iran war, Strait of Hormuz tensions, and the cascading global oil crisis — aggregated in real time from seven international news organisations.
+    </p>
+    <div class="hero-cta">
+      <a class="btn-launch" href="iran-crisis-news.html">
+        Open Live Dashboard
+        <svg viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 5.5h7M5.5 2l3.5 3.5L5.5 9"/></svg>
+      </a>
+      <a class="btn-ghost" href="#impact">Systemic Impact ↓</a>
+    </div>
+  </div>
+
+  <div class="hero-bar">
+    <div class="hb-item"><span class="hb-val red">HIGH</span><span class="hb-lbl">Hormuz Threat Level</span></div>
+    <div class="hb-item"><span class="hb-val">7</span><span class="hb-lbl">Live News Sources</span></div>
+    <div class="hb-item"><span class="hb-val">5<span style="font-size:1rem">min</span></span><span class="hb-lbl">Auto-Refresh</span></div>
+    <div class="hb-item"><span class="hb-val">38</span><span class="hb-lbl">Crisis Keywords Tracked</span></div>
+  </div>
+</section>
+
+<!-- CRISIS CONTEXT -->
+<section class="s" id="crisis">
+  <div class="s-inner">
+    <div class="s-label rv">The Crisis</div>
+    <h2 class="s-h2 rv">Why This<br>Dashboard Exists</h2>
+    <p class="s-body rv">
+      The Iran conflict and its knock-on effects on global oil supply represent one of the most consequential geopolitical situations of the decade. IRANWARWATCH exists to keep you informed — consolidating the signal from noise across the world's major newsrooms into one focused, real-time feed.
+    </p>
+
+    <div class="context-grid">
+      <div class="ctx-cell rv">
+        <span class="ctx-icon">🔥</span>
+        <div class="ctx-title">The Iran War</div>
+        <div class="ctx-text">Direct military confrontations, proxy warfare through Hezbollah, Hamas, and Houthi forces, nuclear programme escalation, and the ever-present risk of a full regional war drawing in Israel, the US, and Gulf states. IRANWARWATCH tracks every development — strikes, negotiations, IRGC activity, and diplomatic fallout — across Reuters, BBC, AP, Al Jazeera and more.</div>
+        <div class="ctx-stat"><strong>CRITICAL</strong> current threat assessment · Persian Gulf</div>
+      </div>
+      <div class="ctx-cell rv">
+        <span class="ctx-icon">🛢️</span>
+        <div class="ctx-title">The Oil Crisis</div>
+        <div class="ctx-text">Iran controls the eastern shore of the Strait of Hormuz — through which 20% of all global oil transits daily. Any closure, even partial, triggers immediate supply shocks across Asian, European, and US markets. Brent crude, WTI, OPEC production decisions, Saudi Aramco, tanker routes, and pipeline security are all in IRANWARWATCH's scope.</div>
+        <div class="ctx-stat"><strong>$91</strong> Brent crude indicative · +2.3% on tensions</div>
+      </div>
+      <div class="ctx-cell rv">
+        <span class="ctx-icon">🌊</span>
+        <div class="ctx-title">Strait of Hormuz</div>
+        <div class="ctx-text">The 33km-wide chokepoint between Iran and Oman is the world's most critical maritime oil route. Iran has repeatedly threatened to close it. IRANWARWATCH monitors naval deployments, tanker seizures, US 5th Fleet movements, and Houthi Red Sea attacks that collectively threaten the unimpeded flow of 21 million barrels per day.</div>
+        <div class="ctx-stat"><strong>21M</strong> barrels per day flow through Hormuz</div>
+      </div>
+      <div class="ctx-cell rv">
+        <span class="ctx-icon">🌍</span>
+        <div class="ctx-title">Global Cascade</div>
+        <div class="ctx-text">The conflict does not stay regional. Oil price spikes drive inflation globally, destabilise currencies in import-dependent economies, and force central bank responses. Supply chain disruptions, LNG market tightening, European energy security, and emerging market debt stress all trace back to this single theatre. IRANWARWATCH connects those dots.</div>
+        <div class="ctx-stat"><strong>190+</strong> countries exposed to oil price shock</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THREAT STRIP -->
+<div class="threat-strip">
+  <div class="ts-item">
+    <span class="ts-val red">CRITICAL</span>
+    <span class="ts-lbl">Iran Threat Level</span>
+    <span class="ts-note">Persian Gulf — active IRGC operations</span>
+  </div>
+  <div class="ts-item">
+    <span class="ts-val red">CRITICAL</span>
+    <span class="ts-lbl">Strait of Hormuz</span>
+    <span class="ts-note">Closure risk — naval presence elevated</span>
+  </div>
+  <div class="ts-item">
+    <span class="ts-val amb">ELEVATED</span>
+    <span class="ts-lbl">Red Sea Corridor</span>
+    <span class="ts-note">Houthi attacks — shipping rerouting</span>
+  </div>
+  <div class="ts-item">
+    <span class="ts-val amb">ELEVATED</span>
+    <span class="ts-lbl">Oil Market Stress</span>
+    <span class="ts-note">Brent +14% since escalation began</span>
+  </div>
+</div>
+
+<hr class="rule"/>
+
+<!-- REGIONS -->
+<section class="s" id="regions">
+  <div class="s-inner">
+    <div class="s-label rv">Coverage Area</div>
+    <h2 class="s-h2 rv">Monitored<br>Regions</h2>
+    <p class="s-body rv">Six critical zones where events directly feed the Iran conflict or oil crisis. News mentioning these regions is prioritised and surfaced at the top of the dashboard feed.</p>
+
+    <div class="region-grid">
+      <div class="rg rv">
+        <div class="rg-flag">🇮🇷</div>
+        <div>
+          <div class="rg-name">Iran</div>
+          <div class="rg-why">Nuclear programme, IRGC operations, proxy network command, US sanctions regime, internal political stability.</div>
+          <div class="rg-status s-crit">● CRITICAL</div>
+        </div>
+      </div>
+      <div class="rg rv">
+        <div class="rg-flag">🌊</div>
+        <div>
+          <div class="rg-name">Strait of Hormuz</div>
+          <div class="rg-why">Primary global oil chokepoint. Iranian naval activity, tanker seizures, US carrier group positioning.</div>
+          <div class="rg-status s-crit">● CRITICAL</div>
+        </div>
+      </div>
+      <div class="rg rv">
+        <div class="rg-flag">🇮🇱</div>
+        <div>
+          <div class="rg-name">Israel</div>
+          <div class="rg-why">Direct Iran–Israel exchange, strike operations, Hezbollah northern front, Gaza theatre spillover.</div>
+          <div class="rg-status s-elev">● ELEVATED</div>
+        </div>
+      </div>
+      <div class="rg rv">
+        <div class="rg-flag">🇸🇦</div>
+        <div>
+          <div class="rg-name">Saudi Arabia</div>
+          <div class="rg-why">OPEC leadership, Aramco infrastructure vulnerability, Iran-KSA proxy rivalry across Yemen and Iraq.</div>
+          <div class="rg-status s-elev">● ELEVATED</div>
+        </div>
+      </div>
+      <div class="rg rv">
+        <div class="rg-flag">🇮🇶</div>
+        <div>
+          <div class="rg-name">Iraq</div>
+          <div class="rg-why">Iranian-backed militia activity, US base targeting, key production zone for Basra crude exports.</div>
+          <div class="rg-status s-watch">● WATCH</div>
+        </div>
+      </div>
+      <div class="rg rv">
+        <div class="rg-flag">🇺🇸</div>
+        <div>
+          <div class="rg-name">United States</div>
+          <div class="rg-why">5th Fleet Gulf deployment, sanctions enforcement, diplomatic back-channel negotiations, Congressional posture.</div>
+          <div class="rg-status s-elev">● ELEVATED</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule"/>
+
+<!-- OIL CRISIS -->
+<section class="s" id="oil">
+  <div class="s-inner">
+    <div class="s-label rv">Energy Intelligence</div>
+    <h2 class="s-h2 rv">The Oil<br>Crisis Tracker</h2>
+
+    <div class="oil-layout">
+      <div>
+        <div class="oil-text rv">
+          <p>The dashboard's <strong>Oil &amp; Energy filter</strong> surfaces every article touching crude prices, OPEC decisions, tanker movements, pipeline security, and the macroeconomic fallout of supply disruptions — all sourced live from OilPrice.com, Reuters, and the Financial desk feeds of major newsrooms.</p>
+          <p>When tensions spike in the Strait, IRANWARWATCH surfaces the downstream reporting instantly: futures movements, emergency IEA reserve releases, airline fuel surcharge announcements, and currency stress in oil-import-dependent economies.</p>
+          <p>The dashboard tracks <strong>Brent Crude, WTI, Dubai crude, and European natural gas (TTF)</strong> as reference markers alongside the news cards, giving you price context alongside the geopolitical reporting that's moving markets.</p>
+        </div>
+      </div>
+      <div>
+        <div class="oil-metrics rv">
+          <div class="om">
+            <div>
+              <div class="om-name">Brent Crude</div>
+              <div style="font-family:var(--f2);font-size:.5rem;color:var(--paper4);margin-top:2px;letter-spacing:.05em">ICE Futures · $/bbl</div>
+            </div>
+            <div class="om-right">
+              <span class="om-val">$91.40</span>
+              <span class="om-chg chg-up">↑ +2.34% on Hormuz fears</span>
+            </div>
+          </div>
+          <div class="om">
+            <div>
+              <div class="om-name">WTI Crude</div>
+              <div style="font-family:var(--f2);font-size:.5rem;color:var(--paper4);margin-top:2px;letter-spacing:.05em">NYMEX · $/bbl</div>
+            </div>
+            <div class="om-right">
+              <span class="om-val">$87.15</span>
+              <span class="om-chg chg-up">↑ +1.97%</span>
+            </div>
+          </div>
+          <div class="om">
+            <div>
+              <div class="om-name">Dubai Crude</div>
+              <div style="font-family:var(--f2);font-size:.5rem;color:var(--paper4);margin-top:2px;letter-spacing:.05em">Spot · $/bbl</div>
+            </div>
+            <div class="om-right">
+              <span class="om-val">$89.75</span>
+              <span class="om-chg chg-up">↑ +2.05%</span>
+            </div>
+          </div>
+          <div class="om">
+            <div>
+              <div class="om-name">Nat. Gas TTF</div>
+              <div style="font-family:var(--f2);font-size:.5rem;color:var(--paper4);margin-top:2px;letter-spacing:.05em">European benchmark · €/MWh</div>
+            </div>
+            <div class="om-right">
+              <span class="om-val">€38.20</span>
+              <span class="om-chg chg-up">↑ +4.10%</span>
+            </div>
+          </div>
+          <div class="om-note">* Indicative reference prices only. For live market data consult Bloomberg, Reuters, or CME Group.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT DASHBOARD SECTION -->
+<section class="dash-s" id="impact">
+  <div class="dash-inner">
+    <div class="s-label rv">Systemic Impact Suite</div>
+    <h2 class="s-h2 rv" style="margin-bottom:1.2rem">Beyond the News Feed —<br>The Impact Dashboard</h2>
+
+    <div class="dash-top">
+      <div>
+        <div class="dash-desc rv">
+          <p>The IRANWARWATCH <strong>Systemic Impact Dashboard</strong> goes deeper than headlines. While the news feed aggregates reporting, the dashboard tracks the <strong>real-world consequences</strong> of the Iran war across seven interconnected domains — from tanker movements in the Strait of Hormuz to IAEA uranium enrichment data and OFAC sanctions designations.</p>
+          <p>Each panel pulls live data from independent sources: <strong>MarineTraffic AIS</strong> for vessel positions, <strong>TradingView</strong> for live oil price charts, <strong>Check Point ThreatCloud</strong> for the cyberattack map, and the <strong>UNHCR Population API</strong> for displacement figures. New panels cover the military order of battle, sanctions evasion networks, and active diplomatic negotiation tracks.</p>
+          <p>Every panel includes <strong>live threshold alerts</strong> — colour-coded CRITICAL / WARNING / INFO — so you see escalations the moment they cross a threshold, not buried in a feed.</p>
+        </div>
+      </div>
+      <div class="rv" style="display:flex;flex-direction:column;gap:.8rem">
+        <!-- mini alert preview -->
+        <div style="border:1px solid rgba(220,232,240,.07);background:var(--ink);padding:1rem">
+          <div style="font-family:var(--f2);font-size:.5rem;letter-spacing:.15em;text-transform:uppercase;color:var(--paper3);margin-bottom:.7rem;display:flex;align-items:center;gap:.4rem"><span style="width:5px;height:5px;border-radius:50%;background:var(--red);display:inline-block;flex-shrink:0"></span>Live Alert Feed — Sample</div>
+          <div style="display:flex;flex-direction:column;gap:.4rem">
+            <div style="padding:.45rem .6rem;background:rgba(212,42,10,.05);border-left:2px solid var(--red);display:flex;gap:.6rem;align-items:flex-start">
+              <span style="font-family:var(--f2);font-size:.44rem;letter-spacing:.1em;text-transform:uppercase;background:rgba(212,42,10,.15);color:var(--red);border:1px solid rgba(212,42,10,.2);padding:.1rem .35rem;flex-shrink:0;margin-top:.1rem">CRITICAL</span>
+              <div style="font-family:var(--f2);font-size:.56rem;color:var(--paper2);line-height:1.5;letter-spacing:.03em">IAF strike confirmed — Isfahan missile facility. S-300 radar neutralised.</div>
+            </div>
+            <div style="padding:.45rem .6rem;background:rgba(196,122,0,.04);border-left:2px solid var(--amber);display:flex;gap:.6rem;align-items:flex-start">
+              <span style="font-family:var(--f2);font-size:.44rem;letter-spacing:.1em;text-transform:uppercase;background:rgba(196,122,0,.15);color:var(--amber);border:1px solid rgba(196,122,0,.2);padding:.1rem .35rem;flex-shrink:0;margin-top:.1rem">WARNING</span>
+              <div style="font-family:var(--f2);font-size:.56rem;color:var(--paper2);line-height:1.5;letter-spacing:.03em">Brent crude flash spike $92.10 — Hormuz closure threat pricing in.</div>
+            </div>
+            <div style="padding:.45rem .6rem;background:rgba(14,157,184,.04);border-left:2px solid var(--teal);display:flex;gap:.6rem;align-items:flex-start">
+              <span style="font-family:var(--f2);font-size:.44rem;letter-spacing:.1em;text-transform:uppercase;background:rgba(14,157,184,.12);color:var(--teal);border:1px solid rgba(14,157,184,.2);padding:.1rem .35rem;flex-shrink:0;margin-top:.1rem">INFO</span>
+              <div style="font-family:var(--f2);font-size:.56rem;color:var(--paper2);line-height:1.5;letter-spacing:.03em">Qatar back-channel confirmed — indirect US–Iran contact active. Prisoner exchange on agenda.</div>
+            </div>
+          </div>
+        </div>
+        <div style="font-family:var(--f2);font-size:.5rem;color:var(--paper4);letter-spacing:.06em;text-align:right">Alerts refresh with each panel · Threshold-triggered · Timestamped UTC</div>
+      </div>
+    </div>
+
+    <!-- 7 panel cards -->
+    <div class="panels-grid">
+      <a class="pcrd rv"  style="--c:#0e9db8">
+        <div class="pcrd-icon">🚢</div>
+        <div>
+          <div class="pcrd-title">Maritime Flow</div>
+          <div class="pcrd-sub">Hormuz · Red Sea · Persian Gulf</div>
+        </div>
+        <div class="pcrd-desc">Live MarineTraffic AIS vessel map centred on the Strait of Hormuz. Tracks tanker movements, IRGC naval activity, and US carrier group positioning. 21M bbl/day throughput monitoring.</div>
+        <div class="pcrd-tags">
+          <span class="ptag ptag-r">CRITICAL</span>
+          <span class="ptag ptag-t">AIS Live</span>
+          <span class="ptag ptag-a">Hormuz</span>
+        </div>
+      </a>
+
+      <a class="pcrd rv"  style="--c:#c47a00">
+        <div class="pcrd-icon">📈</div>
+        <div>
+          <div class="pcrd-title">Market Shock</div>
+          <div class="pcrd-sub">Oil · Gas · Currency</div>
+        </div>
+        <div class="pcrd-desc">Four live TradingView price charts: Brent crude, WTI, natural gas, and the Iranian Rial. Conflict premium tracker, OPEC watch, and real-time commodity metrics updated intraday.</div>
+        <div class="pcrd-tags">
+          <span class="ptag ptag-a">$91.40 Brent</span>
+          <span class="ptag ptag-r">+$14 Premium</span>
+          <span class="ptag ptag-t">TradingView</span>
+        </div>
+      </a>
+
+      <a class="pcrd rv"  style="--c:#d42a0a">
+        <div class="pcrd-icon">⚡</div>
+        <div>
+          <div class="pcrd-title">Cyber Conflict</div>
+          <div class="pcrd-sub">APT · DDoS · SCADA · Wiper</div>
+        </div>
+        <div class="pcrd-desc">Check Point ThreatCloud live cyberattack map with a real-time Iran-attributed attack stream. APT34, APT35, and Cyber Avengers operations tracked. Streaming 140K+ events daily.</div>
+        <div class="pcrd-tags">
+          <span class="ptag ptag-r">APT34 Active</span>
+          <span class="ptag ptag-a">SCADA Threat</span>
+          <span class="ptag ptag-t">Checkpoint</span>
+        </div>
+      </a>
+
+      <a class="pcrd rv"  style="--c:#0e9db8">
+        <div class="pcrd-icon">🌍</div>
+        <div>
+          <div class="pcrd-title">Humanitarian Impact</div>
+          <div class="pcrd-sub">UNHCR · Displacement · Aid</div>
+        </div>
+        <div class="pcrd-desc">Live UNHCR Population API data rendered as Chart.js visualisations: refugee origin, host country distribution, and historical displacement trend. 7-country aid needs progress bars. 35.3M refugees tracked.</div>
+        <div class="pcrd-tags">
+          <span class="ptag ptag-t">UNHCR API</span>
+          <span class="ptag ptag-r">35.3M Refugees</span>
+          <span class="ptag ptag-a">Chart.js</span>
+        </div>
+      </a>
+
+      <a class="pcrd rv"  style="--c:#d42a0a">
+        <div class="pcrd-icon">🎯</div>
+        <div>
+          <div class="pcrd-title">Military Tracker</div>
+          <div class="pcrd-sub">Strikes · OOB · Escalation</div>
+        </div>
+        <div class="pcrd-desc">Strike event timeline, weapons order-of-battle table covering 10 active systems (Shahab-3, F-35I, Shahed-136, B-52H), and a 90-day escalation intensity chart across strikes, missile launches, and drone incidents.</div>
+        <div class="pcrd-tags">
+          <span class="ptag ptag-r">47 Strikes/30d</span>
+          <span class="ptag ptag-a">OOB Table</span>
+          <span class="ptag ptag-r">NEW</span>
+        </div>
+        <div class="pcrd-new">NEW</div>
+      </a>
+
+      <a class="pcrd rv"  style="--c:#c47a00">
+        <div class="pcrd-icon">⛔</div>
+        <div>
+          <div class="pcrd-title">Sanctions &amp; Trade</div>
+          <div class="pcrd-sub">OFAC · Shadow Fleet · Revenue</div>
+        </div>
+        <div class="pcrd-desc">Live OFAC designation log, Iran oil export destination pie chart, sanctions revenue vs capacity bar chart, and shadow fleet evasion routes with AIS spoofing methods. 1,700+ OFAC designations tracked.</div>
+        <div class="pcrd-tags">
+          <span class="ptag ptag-r">1,700+ OFAC</span>
+          <span class="ptag ptag-a">Shadow Fleet</span>
+          <span class="ptag ptag-r">NEW</span>
+        </div>
+        <div class="pcrd-new">NEW</div>
+      </a>
+
+      <a class="pcrd rv"  style="--c:#7c3aed">
+        <div class="pcrd-icon">🕊</div>
+        <div>
+          <div class="pcrd-title">Diplomatic Intel</div>
+          <div class="pcrd-sub">JCPOA · Negotiations · Nuclear</div>
+        </div>
+        <div class="pcrd-desc">Diplomatic event timeline, 8-country bilateral posture table, 5 active negotiation tracks (Qatar, Oman, E3 snapback, Doha), and a stacked bar chart of Iran's nuclear enrichment stockpile by grade from IAEA estimates.</div>
+        <div class="pcrd-tags">
+          <span class="ptag ptag-p">JCPOA Dead</span>
+          <span class="ptag ptag-a">60% Enriched</span>
+          <span class="ptag ptag-r">NEW</span>
+        </div>
+        <div class="pcrd-new">NEW</div>
+      </a>
+    </div>
+
+    <!-- Dashboard launch CTA -->
+    <div class="dash-cta-block rv">
+      <div class="dcb-left">
+        <div class="dcb-title">Open the Impact Dashboard</div>
+        <div class="dcb-sub">All 7 panels. Live data. Threshold alerts. Single HTML file — no backend, no login.</div>
+        <div class="dcb-meta">
+          <div class="dcb-stat"><b>7</b> intelligence panels</div>
+          <div class="dcb-stat"><b>4</b> live data sources</div>
+          <div class="dcb-stat"><b>3</b> new panels</div>
+          <div class="dcb-stat"><b>Zero</b> backend required</div>
+        </div>
+      </div>
+      <a class="btn-launch" href="https://iranwarwatch.nekoweb.org/impact-dashboard.html">
+        Launch Impact Dashboard
+        <svg viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 5.5h7M5.5 2l3.5 3.5L5.5 9"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<hr class="rule"/>
+
+<!-- CTA -->
+<div class="cta">
+  <div class="cta-kicker rv">Stay informed. Stay ahead.</div>
+  <h2 class="cta-h rv">
+    TWO TOOLS.<br><span class="ghost">ONE MISSION.</span>
+  </h2>
+  <p class="cta-sub rv">The news feed delivers real-time headlines. The impact dashboard tracks what those headlines are actually doing to the world.</p>
+  <div class="cta-actions rv">
+    <a class="btn-launch" href="iran-crisis-news.html">
+      Open News Feed
+      <svg viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 5.5h7M5.5 2l3.5 3.5L5.5 9"/></svg>
+    </a>
+    <a class="btn-launch" href="warwatch-dashboard.html" style="background:transparent;color:var(--red);border:1px solid var(--red2)">
+      Open Impact Dashboard
+      <svg viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 5.5h7M5.5 2l3.5 3.5L5.5 9"/></svg>
+    </a>
+  </div>
+</div>
+
+<footer>
+  <div class="ft-logo">WARWATCH</div>
+  <div class="ft-txt">Intelligence aggregator · Publicly available RSS feeds only · Not affiliated with any news organisation</div>
+  <div class="ft-txt" style="text-align:right">Reuters · BBC · Al Jazeera · Guardian · AP · OilPrice · NYT</div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in') });
+}, { threshold: 0.1 });
+document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
